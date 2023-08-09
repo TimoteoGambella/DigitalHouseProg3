@@ -1,3 +1,5 @@
+import React from "react";
+
 import Card from "./components/Card/Card";
 import CategoryCard from "./components/CategoryCard/CategoryCard";
 import ElementoFicha from "./components/ElementoFicha/ElementoFicha";
@@ -86,33 +88,30 @@ function App() {
     },
   ]
 
+  const arrayCategories = ["category 1","category 2","category 3","category 4","category 5","category 6"]
+
+  const arrayNavbar = ["menu5","menu6","menu7","menu8"]
+
+  const arrayTarjetas = ["fas fa-clipboard-list fa-2x text-gray-300","fas fa-dollar-sign fa-2x text-gray-300","fas fa-user fa-2x text-gray-300"]
+
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar arrayNavbar={arrayNavbar}/>
       <Title title="My FIRST App in React"/>
 
       <main>
         <section className="top-data">
-          <ElementoFicha logo={"fas fa-clipboard-list fa-2x text-gray-300"}/>
-          <ElementoFicha logo={"fas fa-dollar-sign fa-2x text-gray-300"}/>
-          <ElementoFicha logo={"fas fa-user fa-2x text-gray-300"}/>
+          {arrayTarjetas.map((tarjeta,idx)=><ElementoFicha key={idx} logo={tarjeta}/>)}
         </section>
 
         <h2>Categories in databases</h2>
         <section className="general-data">
-          <CategoryCard categoryName="category 1"/>
-          <CategoryCard categoryName="category 2"/>
-          <CategoryCard categoryName="category 3"/>
-          <CategoryCard categoryName="category 4"/>
-          <CategoryCard categoryName="category 5"/>
-          <CategoryCard categoryName="category 6"/>
+          {arrayCategories.map((category,idx) =><CategoryCard key={category+idx} categoryName={category}/>)}
         </section>
 
         <h2>Personajes de peliculas</h2>
         <section className="personajes-contenedor">
-          <Card logo={foto1} name="Ahsoka" description="ojdfkbv dfhvbkjdf vdfkjv dfvjlkjdfbv dsfljvkbdf"/>
-          <Card logo={foto2} name="Anakin" description="ojdfkbv dfhvbkjdf vdfkjv dfvjlkjdfbv dsfljvkbdf"/>
-          <Card logo={foto3} name="Batman" description="ojdfkbv dfhvbkjdf vdfkjv dfvjlkjdfbv dsfljvkbdf"/>
+          {arrayHeroes.map((heroe,i) => <Card key={i} name={heroe.name} description={heroe.description} photo={heroe.photo}/>)}
         </section>
       </main>
     </div>
